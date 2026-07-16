@@ -15,5 +15,5 @@ jobs:
 
             - name: Execute Shell
               run: |
-              chmod +x 2.7-ascii-script.sh 
-              ./2.7-ascii-script.sh
+               chmod +x 2.7-ascii-script.sh
+               ./2.7-ascii-script.sh
