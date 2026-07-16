@@ -23,7 +23,7 @@ jobs:
               run: sudo apt-get install cowsay -y
 
             - name: Generate ASCII Content
-              run: cowsay -f dragon "Run for cover, Im a dragon" >>dragon.txts
+              run: cowsay -f dragon "Run for cover, Im a dragon" >>dragon.txt
 
             - name: Upload artifact
               uses: actions/upload-artifact@v7
@@ -58,7 +58,7 @@ jobs:
               uses: actions/download-artifact@v8
               with:
                 name: dragon-artifact
-                
+
             - name: Deploy
               run: echo "Deployed"
 
