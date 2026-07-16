@@ -25,11 +25,22 @@ jobs:
             - name: Generate ASCII Content
               run: cowsay -f dragon "Run for cover, Im a dragon" >>dragon.txts
 
+            - name: Upload artifact
+              uses: actions/upload-artifact@v7
+              with:
+                name: dragon-artifact
+                path: dragon.txts
+
     test_job_2:
         runs-on: ubuntu-latest
         needs:  build_job_1
 
         steps:
+
+            - name: Download artifact
+              uses: actions/download-artifact@v8
+              with:
+                name: dragon-artifact
 
             - name: Sleep
               run: sleep 10
@@ -42,6 +53,12 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+
+            - name: Download artifact
+              uses: actions/download-artifact@v8
+              with:
+                name: dragon-artifact
+                
             - name: Deploy
               run: echo "Deployed"
 
