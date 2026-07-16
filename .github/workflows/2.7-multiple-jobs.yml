@@ -1,0 +1,34 @@
+name: 2.5 First Workflow #if not mentioned it will guve the relative path of the file
+on: push
+
+jobs:
+
+    #name
+    build_job_1: 
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v6
+
+
+            #runs in series
+            - name: Welcome Message | List and Read files
+              run: |
+                echo "1st flow"
+                ls -ltra
+                cat README.md
+
+            - name: Generate ASCII Content
+              run: cowsay -f dragon "Run for cover, Im a dragon" >>dragon.txts
+
+    test_job_2:
+        runs-on: ubuntu-latest
+
+        steps:
+
+            - name: Sleep
+              run: sleep 10
+
+            - name: Find dragon file
+              run: grep -i "dragon" dragon.txt
