@@ -1,10 +1,10 @@
-name: 2.1 First Workflow #if not mentioned it will guve the relative path of the file
+name: 2.5 First Workflow #if not mentioned it will guve the relative path of the file
 on: push
 
 jobs:
 
     #name
-    job_1 Ascii job: 
+    job-1-Ascii-job: 
 
         runs-on: ubuntu-latest
 
