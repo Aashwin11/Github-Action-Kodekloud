@@ -6,9 +6,18 @@ jobs:
 
     matrix-deploy:
         strategy:
+          fail-fast: false   #Setting fail-fast to false prevents GitHub from canceling all in-progress jobs if any matrix job fails. Default: true
+          max-parallel: 2  # max jobs that can run at a time
           matrix:
             os: [ubuntu-latest, windows-latest]
             images: [hello-world, alpine]
+            exclude: 
+                - images: [alpine]
+                  os: [windows-latest]
+            include:
+                - images: [amd64/alpine]
+                  os: [ubuntu-20.04]
+
         runs-on: ${{matrix.os}}
 
         steps:
