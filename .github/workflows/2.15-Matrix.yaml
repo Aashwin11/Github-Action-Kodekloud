@@ -4,28 +4,19 @@ on: push
 
 jobs:
 
-    ubuntu-run:
-        runs-on: ubuntu-latest
+    matrix-deploy:
+        strategy:
+          matrix:
+            os: [ubuntu-latest, windows-latest]
+            images: [hello-world, alpine]
+        runs-on: ${{matrix.os}}
 
         steps:
             - name: Docker info
               run: docker info
 
-            - name: Docker Run
-              run: docker run hello-world
+            - name: Docker Run on ${{matrix.os}}
+              run: docker run ${{matrix.images}}
               
-    
-    windows-run:
-        runs-on: windows-latest
-
-        steps:
-            - name: Docker info
-              run: docker info
-            
-            - name: Docker install
-              run: docker install hello-world
-
-            - name: Docker Run
-              run: docker run hello-world 
 
 
