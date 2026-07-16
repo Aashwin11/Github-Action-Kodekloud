@@ -1,0 +1,31 @@
+name: Matrix
+on: push
+
+
+jobs:
+
+    ubuntu-run:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Docker info
+              run: docker info
+
+            - name: Docker Run
+              run: docker run hello-world
+              
+    
+    windows-run:
+        runs-on: windows-latest
+
+        steps:
+            - name: Docker info
+              run: docker info
+            
+            - name: Docker install
+              run: docker install hello-world
+
+            - name: Docker Run
+              run: docker run hello-world 
+
+
