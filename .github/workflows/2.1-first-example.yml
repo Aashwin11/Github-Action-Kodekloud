@@ -11,6 +11,10 @@ jobs:
 
         #steps
         steps:
+            - name: Checkout repo
+              uses: actions/checkout@v6
+              
+
             #runs in series
             - name: Welcome Message
               run: echo "1st flow"
