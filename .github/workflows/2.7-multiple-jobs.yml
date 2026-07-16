@@ -18,12 +18,16 @@ jobs:
                 echo "1st flow"
                 ls -ltra
                 cat README.md
+            
+            - name: Install cowsay
+              run: sudo apt-get install cowsay -y
 
             - name: Generate ASCII Content
               run: cowsay -f dragon "Run for cover, Im a dragon" >>dragon.txts
 
     test_job_2:
         runs-on: ubuntu-latest
+        needs:  build_job_1
 
         steps:
 
