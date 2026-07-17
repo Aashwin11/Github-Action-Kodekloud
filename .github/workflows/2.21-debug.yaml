@@ -1,0 +1,30 @@
+name: Debug demo
+
+on:
+  workflow_dispatch:
+  push:
+
+env:
+    USER_1: "hoo"
+    USER_2: "joo"
+
+
+jobs:
+
+    hello:
+        runs-on: ubuntu-latest
+      
+        steps:
+          - name: Checkout
+            uses: actions/checkout@v6
+
+          - name: Set user1 to github env
+            run: echo " USERNAME= ${{USER_1}}" >> $GITHUB_ENV
+
+          - name: Print USERNAME
+            run: |
+             echo "USERNAME .... $USERNAME"
+             exit 1
+
+          - name: PRINTING USER 2
+            run: echo ${{USER_2}}
