@@ -19,7 +19,7 @@ jobs:
             uses: actions/checkout@v6
 
           - name: Set user1 to github env
-            run: echo " USERNAME= ${{USER_1}}" >> $GITHUB_ENV
+            run: echo " USERNAME= $USER_1" >> $GITHUB_ENV
 
           - name: Print USERNAME
             run: |
@@ -27,4 +27,4 @@ jobs:
              exit 1
 
           - name: PRINTING USER 2
-            run: echo ${{USER_2}}
+            run: echo $USER_2
