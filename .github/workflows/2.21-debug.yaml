@@ -42,7 +42,7 @@ jobs:
              echo "input 3: ${{ inputs.environment }}"
 
           - name: Event type
-            if: ${{ inputs.run-test == 'true' }}
+            if: ${{ inputs.run-test }}
             run: echo "${{ github.event_name }}"
 
           - name: Set user1 to github env
