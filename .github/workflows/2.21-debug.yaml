@@ -2,7 +2,24 @@ name: Debug demo
 
 on:
   workflow_dispatch:
-  push:
+    inputs:
+      run-test:
+        descirption: "Run test"
+        type: choice
+        required: true
+        options:
+          - true
+          - false
+      test-type:
+        descirption: "Write something"
+        type: string
+        required: true
+      environment:
+        descirption: "Choose the env"
+        required: true
+        type: environment
+
+  # push:
 
 env:
     USER_1: "hoo"
@@ -18,7 +35,14 @@ jobs:
           - name: Checkout
             uses: actions/checkout@v6
             
+          - name: inputs values
+            run: |
+             echo "input 1: ${{ inputs.run-test }}"
+             echo "input 2: ${{ inputs.test-type }}"
+             echo "input 3: ${{ inputs.environment }}"
+
           - name: Event type
+            if: ${{ inputs.run-test == 'true' }}
             run: echo "${{ github.event_name }}"
 
           - name: Set user1 to github env
@@ -27,7 +51,8 @@ jobs:
           - name: Print USERNAME
             run: |
              echo "USERNAME .... $USERNAME"
-             exit 1
+          
+
 
           - name: PRINTING USER 2
             run: echo $USER_2
